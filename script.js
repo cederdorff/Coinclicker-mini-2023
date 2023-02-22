@@ -189,7 +189,11 @@ function clickBomb() {
         .querySelector("#bomb_container")
         .addEventListener("animationend", bombGone);
 
-    decrementLives();
+    if (lives > 0) {
+        decrementLives();
+    } else {
+        gameOver();
+    }
 }
 
 function bombGone() {
@@ -281,10 +285,6 @@ function decrementLives() {
     console.log("mist et liv");
     showDecrementedLives();
     lives--;
-
-    if (lives <= 0) {
-        gameOver();
-    }
 }
 
 function incrementLives() {
@@ -305,8 +305,10 @@ function showIncrementedLives() {
 
 function gameOver() {
     console.log("Game Over");
+    document.querySelector("#game_over").classList.remove("hidden");
 }
 
 function levelComplete() {
     console.log("Level Complete");
+    document.querySelector("#level_complete").classList.remove("hidden");
 }
