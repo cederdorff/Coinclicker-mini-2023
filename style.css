@@ -53,8 +53,10 @@ h2 {
     color: #ffffff;
 }
 
-.hidden {
-    display: none !important;
+.hidden,
+#game_over.hidden,
+#level_complete.hidden {
+    display: none;
 }
 
 /* positioning elements */
