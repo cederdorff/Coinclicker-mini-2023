@@ -264,6 +264,10 @@ function incrementPoints() {
     points++;
     console.log("har nu " + points + " point");
     displayPoints();
+
+    if (points >= 10) {
+        levelComplete();
+    }
 }
 
 function displayPoints() {
@@ -275,6 +279,10 @@ function decrementLives() {
     console.log("mist et liv");
     showDecrementedLives();
     lives--;
+
+    if (lives <= 0) {
+        gameOver();
+    }
 }
 
 function incrementLives() {
@@ -291,4 +299,12 @@ function showDecrementedLives() {
 function showIncrementedLives() {
     document.querySelector("#heart" + lives).classList.remove("broken_heart");
     document.querySelector("#heart" + lives).classList.add("active_heart");
+}
+
+function gameOver() {
+    console.log("Game Over");
+}
+
+function levelComplete() {
+    console.log("Level Complete");
 }
