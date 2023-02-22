@@ -226,7 +226,7 @@ function clickHeart() {
     document.querySelector("#heart_container").classList.add("paused");
 
     // sæt forsvind-animation på heart
-    document.querySelector("#heart_sprite").classList.add("zoom_in");
+    document.querySelector("#heart_sprite").classList.add("zoom_out");
 
     // når forsvind-animation er færdig: heatGone
     document
@@ -243,7 +243,7 @@ function heartGone() {
         .removeEventListener("animationend", heartGone);
 
     // fjern forsvind-animation
-    document.querySelector("#heart_sprite").classList.remove("zoom_in");
+    document.querySelector("#heart_sprite").classList.remove("zoom_out");
 
     // fjern pause
     document.querySelector("#heart_container").classList.remove("paused");
