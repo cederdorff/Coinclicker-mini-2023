@@ -189,11 +189,7 @@ function clickBomb() {
         .querySelector("#bomb_container")
         .addEventListener("animationend", bombGone);
 
-    if (lives > 0) {
-        decrementLives();
-    } else {
-        gameOver();
-    }
+    decrementLives();
 }
 
 function bombGone() {
@@ -283,7 +279,13 @@ function displayPoints() {
 
 function decrementLives() {
     console.log("mist et liv");
-    showDecrementedLives();
+
+    if (lives <= 0) {
+        gameOver();
+    } else {
+        showDecrementedLives();
+    }
+
     lives--;
 }
 
