@@ -233,7 +233,9 @@ function clickHeart() {
         .querySelector("#heart_container")
         .addEventListener("animationend", heartGone);
 
-    incrementLives();
+    if (lives < 3) {
+        incrementLives();
+    }
 }
 
 function heartGone() {
