@@ -53,7 +53,9 @@ h2 {
     color: #ffffff;
 }
 
-.hidden {
+.hidden,
+#game_over.hidden,
+#level_complete.hidden {
     display: none;
 }
 
