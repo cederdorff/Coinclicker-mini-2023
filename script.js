@@ -280,12 +280,11 @@ function displayPoints() {
 function decrementLives() {
     console.log("mist et liv");
 
-    if (lives <= 0) {
+    if (lives === 1) {
         gameOver();
     } else {
         showDecrementedLives();
     }
-
     lives--;
 }
 
@@ -308,9 +307,37 @@ function showIncrementedLives() {
 function gameOver() {
     console.log("Game Over");
     document.querySelector("#game_over").classList.remove("hidden");
+    stop();
 }
 
 function levelComplete() {
     console.log("Level Complete");
     document.querySelector("#level_complete").classList.remove("hidden");
+    stop();
+}
+
+function stop() {
+    // Stop animationer
+    document.querySelector("#coin1_container").classList.remove("falling");
+    document.querySelector("#coin2_container").classList.remove("falling");
+    document.querySelector("#coin3_container").classList.remove("falling");
+    document.querySelector("#bomb_container").classList.remove("falling");
+    document.querySelector("#heart_container").classList.remove("falling");
+
+    // Fjern click
+    document
+        .querySelector("#coin1_container")
+        .removeEventListener("click", clickCoin);
+    document
+        .querySelector("#coin2_container")
+        .removeEventListener("click", clickCoin2);
+    document
+        .querySelector("#coin3_container")
+        .removeEventListener("click", clickCoin3);
+    document
+        .querySelector("#bomb_container")
+        .removeEventListener("click", clickBomb);
+    document
+        .querySelector("#heart_container")
+        .removeEventListener("click", clickHeart);
 }
