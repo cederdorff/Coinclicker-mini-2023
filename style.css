@@ -214,7 +214,7 @@ h2 {
 
 .zoom_in {
     animation-name: zoom_in;
-    animation-duration: 1s;
+    animation-duration: 1.7s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }

@@ -11,6 +11,9 @@ function start() {
     points = 0;
     lives = 3;
 
+    // Start baggrundsmusik
+    document.querySelector("#sound_bg").play();
+
     startAlleAnimationer();
 
     // Registrer click
@@ -58,6 +61,11 @@ function clickCoin() {
 
     // når forsvind-animation er færdig: coinGone
     coin.addEventListener("animationend", coinGone);
+
+    // Genstart mønt-lyd
+    document.querySelector("#sound_coin").currentTime = 0;
+    // Afspil mønt-lyd
+    document.querySelector("#sound_coin").play();
 
     // Giv point
     incrementPoints();
@@ -112,6 +120,11 @@ function clickBomb() {
 
     // når forsvind-animation er færdig: coinGone
     document.querySelector("#bomb_container").addEventListener("animationend", bombGone);
+
+    // Genstart bombe-lyd
+    document.querySelector("#sound_bomb").currentTime = 0;
+    // Afspil bombe-lyd
+    document.querySelector("#sound_bomb").play();
 
     decrementLives();
 }
@@ -226,6 +239,8 @@ function levelComplete() {
     console.log("Level Complete");
     document.querySelector("#level_complete").classList.remove("hidden");
     stop();
+    // Afspil tada-lyd
+    document.querySelector("#sound_tada").play();
 }
 
 function stop() {
@@ -242,4 +257,7 @@ function stop() {
     document.querySelector("#coin3_container").removeEventListener("click", clickCoin);
     document.querySelector("#bomb_container").removeEventListener("click", clickBomb);
     document.querySelector("#heart_container").removeEventListener("click", clickHeart);
+
+    // Stop alle lyde
+    document.querySelector("#sound_bg").pause();
 }
