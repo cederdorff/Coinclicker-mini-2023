@@ -65,7 +65,6 @@ h2 {
     position: absolute;
 
     top: 0;
-    left: 10vw;
 }
 
 #coin1_sprite {
@@ -76,7 +75,6 @@ h2 {
     position: absolute;
 
     top: 0;
-    left: 40vw;
 }
 
 #coin2_sprite {
@@ -87,7 +85,6 @@ h2 {
     position: absolute;
 
     top: 0;
-    left: 70vw;
 }
 
 #coin3_sprite {
@@ -98,7 +95,6 @@ h2 {
     position: absolute;
 
     top: 0;
-    left: 30vw;
 }
 
 #bomb_sprite {
@@ -109,11 +105,31 @@ h2 {
     position: absolute;
 
     top: 0;
-    left: 55vw;
 }
 
 #heart_sprite {
     width: 100%;
+}
+
+/* position classes */
+.position1 {
+    left: 10vw;
+}
+
+.position2 {
+    left: 40vw;
+}
+
+.position3 {
+    left: 70vw;
+}
+
+.position4 {
+    left: 30vw;
+}
+
+.position5 {
+    left: 55vw;
 }
 
 /* UI */
