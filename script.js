@@ -12,7 +12,7 @@ function start() {
     lives = 3;
 
     // Start baggrundsmusik
-    document.querySelector("#sound_bg").play();
+    document.querySelector("#sound_dreams").play();
 
     startAlleAnimationer();
 
@@ -259,5 +259,5 @@ function stop() {
     document.querySelector("#heart_container").removeEventListener("click", clickHeart);
 
     // Stop alle lyde
-    document.querySelector("#sound_bg").pause();
+    document.querySelector("#sound_dreams").pause();
 }
