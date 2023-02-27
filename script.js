@@ -6,7 +6,12 @@ let lives = 0;
 
 function start() {
     console.log("JavaScript kører!");
+    document.querySelector("#btn_start").addEventListener("click", startGame);
+}
 
+function startGame() {
+    document.querySelector("#start").classList.add("hidden");
+    document.querySelector("#game").classList.remove("hidden");
     // nulstil point og liv
     points = 0;
     lives = 3;

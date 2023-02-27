@@ -43,7 +43,8 @@ h2 {
     color: #ffffff;
 }
 
-#level_complete {
+#level_complete,
+#start {
     grid-area: 1 /1;
     z-index: 999;
     display: grid;
@@ -55,7 +56,9 @@ h2 {
 
 .hidden,
 #game_over.hidden,
-#level_complete.hidden {
+#level_complete.hidden,
+#game.hidden,
+#start.hidden {
     display: none;
 }
 
