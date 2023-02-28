@@ -1,26 +1,57 @@
 "use strict";
-window.addEventListener("load", start);
+window.addEventListener("load", ready);
 
 let points = 0;
 let lives = 0;
 
-function start() {
+function ready() {
     console.log("JavaScript kører!");
     document.querySelector("#btn_start").addEventListener("click", startGame);
+    document.querySelector("#btn_restart").addEventListener("click", startGame);
+    document.querySelector("#btn_go_to_start").addEventListener("click", showStartScreen);
+}
+
+function showStartScreen() {
+    document.querySelector("#start").classList.remove("hidden");
+    document.querySelector("#game_over").classList.add("hidden");
+    document.querySelector("#level_complete").classList.add("hidden");
+}
+
+function showGameScreen() {
+    // Skjul startskærm, game over og level complete
+    document.querySelector("#start").classList.add("hidden");
+    document.querySelector("#game_over").classList.add("hidden");
+    document.querySelector("#level_complete").classList.add("hidden");
+}
+
+function resetLives() {
+    // sæt lives til 3
+    lives = 3;
+    //nulstil visning af liv
+    document.querySelector("#heart1").classList.remove("broken_heart");
+    document.querySelector("#heart2").classList.remove("broken_heart");
+    document.querySelector("#heart3").classList.remove("broken_heart");
+    document.querySelector("#heart1").classList.add("active_heart");
+    document.querySelector("#heart2").classList.add("active_heart");
+    document.querySelector("#heart3").classList.add("active_heart");
+}
+
+function resetPoints() {
+    // nulstil point
+    points = 0;
+    // nulstil vising af point
+    displayPoints();
 }
 
 function startGame() {
-    // Skjul startskærm
-    document.querySelector("#start").classList.add("hidden");
-
-    // nulstil point og liv
-    points = 0;
-    lives = 3;
+    resetLives();
+    resetPoints();
+    showGameScreen();
 
     // Start baggrundsmusik
     document.querySelector("#sound_dreams").play();
-
-    startAlleAnimationer();
+    // start alle animationer
+    startAllAnimations();
 
     // Registrer click
     document.querySelector("#coin1_container").addEventListener("click", clickCoin);
@@ -35,7 +66,7 @@ function startGame() {
     document.querySelector("#coin3_container").addEventListener("animationiteration", coinRestart);
 }
 
-function startAlleAnimationer() {
+function startAllAnimations() {
     // Start falling animationer
     document.querySelector("#coin1_container").classList.add("falling");
     document.querySelector("#coin2_container").classList.add("falling");
@@ -264,6 +295,7 @@ function stopGame() {
     document.querySelector("#bomb_container").removeEventListener("click", clickBomb);
     document.querySelector("#heart_container").removeEventListener("click", clickHeart);
 
-    // Stop alle lyde
+    // Stop og nulstil lyde, fx baggrundsmusik
     document.querySelector("#sound_dreams").pause();
+    document.querySelector("#sound_dreams").currentTime = 0;
 }
