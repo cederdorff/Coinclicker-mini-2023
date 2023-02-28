@@ -239,18 +239,18 @@ function showIncrementedLives() {
 function gameOver() {
     console.log("Game Over");
     document.querySelector("#game_over").classList.remove("hidden");
-    stop();
+    stopGame();
 }
 
 function levelComplete() {
     console.log("Level Complete");
     document.querySelector("#level_complete").classList.remove("hidden");
-    stop();
+    stopGame();
     // Afspil tada-lyd
     document.querySelector("#sound_tada").play();
 }
 
-function stop() {
+function stopGame() {
     // Stop animationer
     document.querySelector("#coin1_container").classList.remove("falling");
     document.querySelector("#coin2_container").classList.remove("falling");
