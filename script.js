@@ -12,8 +12,7 @@ function start() {
 function startGame() {
     // Skjul startskærm
     document.querySelector("#start").classList.add("hidden");
-    // Vis spilleskærm
-    document.querySelector("#game").classList.remove("hidden");
+
     // nulstil point og liv
     points = 0;
     lives = 3;
