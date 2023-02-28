@@ -1,20 +1,15 @@
 "use strict";
 window.addEventListener("load", ready);
 
+// globale variabler
 let points = 0;
 let lives = 0;
 
 function ready() {
-    console.log("JavaScript kører!");
+    console.log("JavaScript ready!");
     document.querySelector("#btn_start").addEventListener("click", startGame);
     document.querySelector("#btn_restart").addEventListener("click", startGame);
     document.querySelector("#btn_go_to_start").addEventListener("click", showStartScreen);
-}
-
-function showStartScreen() {
-    document.querySelector("#start").classList.remove("hidden");
-    document.querySelector("#game_over").classList.add("hidden");
-    document.querySelector("#level_complete").classList.add("hidden");
 }
 
 function showGameScreen() {
@@ -24,10 +19,17 @@ function showGameScreen() {
     document.querySelector("#level_complete").classList.add("hidden");
 }
 
+function showStartScreen() {
+    // fjern hidden fra startskærm og tilføj til game over og level complete
+    document.querySelector("#start").classList.remove("hidden");
+    document.querySelector("#game_over").classList.add("hidden");
+    document.querySelector("#level_complete").classList.add("hidden");
+}
+
 function resetLives() {
     // sæt lives til 3
     lives = 3;
-    //nulstil visning af liv
+    //nulstil visning af liv (hjerte vi ser)
     document.querySelector("#heart1").classList.remove("broken_heart");
     document.querySelector("#heart2").classList.remove("broken_heart");
     document.querySelector("#heart3").classList.remove("broken_heart");
@@ -199,6 +201,11 @@ function clickHeart() {
     // når forsvind-animation er færdig: heatGone
     document.querySelector("#heart_container").addEventListener("animationend", heartGone);
 
+    // Genstart success-lyd
+    document.querySelector("#sound_success").currentTime = 0;
+    // Afspil success-lyd
+    document.querySelector("#sound_success").play();
+
     if (lives < 3) {
         incrementLives();
     }
@@ -270,6 +277,7 @@ function gameOver() {
     console.log("Game Over");
     document.querySelector("#game_over").classList.remove("hidden");
     stopGame();
+    document.querySelector("#sound_game_over").play();
 }
 
 function levelComplete() {
