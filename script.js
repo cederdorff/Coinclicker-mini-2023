@@ -18,8 +18,6 @@ function startGame() {
     // skjul startskærm
     document.querySelector("#start").classList.add("hidden");
 
-    // Start baggrundsmusik
-    document.querySelector("#sound_dreams").play();
     // start alle animationer
     startAllAnimations();
 
@@ -68,11 +66,6 @@ function clickCoin() {
 
     // når forsvind-animation er færdig: coinGone
     coin.addEventListener("animationend", coinGone);
-
-    // Genstart mønt-lyd
-    document.querySelector("#sound_coin").currentTime = 0;
-    // Afspil mønt-lyd
-    document.querySelector("#sound_coin").play();
 
     // Giv point
     incrementPoints();
@@ -128,11 +121,6 @@ function clickBomb() {
     // når forsvind-animation er færdig: coinGone
     document.querySelector("#bomb_container").addEventListener("animationend", bombGone);
 
-    // Genstart bombe-lyd
-    document.querySelector("#sound_bomb").currentTime = 0;
-    // Afspil bombe-lyd
-    document.querySelector("#sound_bomb").play();
-
     decrementLives();
 }
 
@@ -168,11 +156,6 @@ function clickHeart() {
 
     // når forsvind-animation er færdig: heatGone
     document.querySelector("#heart_container").addEventListener("animationend", heartGone);
-
-    // Genstart success-lyd
-    document.querySelector("#sound_success").currentTime = 0;
-    // Afspil success-lyd
-    document.querySelector("#sound_success").play();
 
     if (lives < 3) {
         incrementLives();
@@ -245,15 +228,12 @@ function gameOver() {
     console.log("Game Over");
     document.querySelector("#game_over").classList.remove("hidden");
     stopGame();
-    document.querySelector("#sound_game_over").play();
 }
 
 function levelComplete() {
     console.log("Level Complete");
     document.querySelector("#level_complete").classList.remove("hidden");
     stopGame();
-    // Afspil tada-lyd
-    document.querySelector("#sound_tada").play();
 }
 
 function stopGame() {
@@ -270,8 +250,4 @@ function stopGame() {
     document.querySelector("#coin3_container").removeEventListener("click", clickCoin);
     document.querySelector("#bomb_container").removeEventListener("click", clickBomb);
     document.querySelector("#heart_container").removeEventListener("click", clickHeart);
-
-    // Stop og nulstil lyde, fx baggrundsmusik
-    document.querySelector("#sound_dreams").pause();
-    document.querySelector("#sound_dreams").currentTime = 0;
 }
