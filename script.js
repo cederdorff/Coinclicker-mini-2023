@@ -248,12 +248,12 @@ function displayPoints() {
 function decrementLives() {
     console.log("mist et liv");
 
-    if (lives === 1) {
-        gameOver();
-    }
-
     showDecrementedLives();
     lives--;
+
+    if (lives === 0) {
+        gameOver();
+    }
 }
 
 function incrementLives() {
