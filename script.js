@@ -4,6 +4,7 @@ window.addEventListener("load", ready);
 // globale variabler
 let points = 0;
 let lives = 0;
+let isGameRunning = false;
 
 function ready() {
     console.log("JavaScript ready!");
@@ -46,6 +47,8 @@ function resetPoints() {
 }
 
 function startGame() {
+    isGameRunning = true;
+
     resetLives();
     resetPoints();
     showGameScreen();
@@ -126,7 +129,9 @@ function coinGone() {
     // fjern pause
     coin.classList.remove("paused");
 
-    coinRestart.call(this);
+    if (isGameRunning) {
+        coinRestart.call(this);
+    }
 
     // gør det muligt at klikke på coin igen
     coin.addEventListener("click", clickCoin);
@@ -181,13 +186,15 @@ function bombGone() {
     // fjern pause
     document.querySelector("#bomb_container").classList.remove("paused");
 
-    // genstart falling animation
-    document.querySelector("#bomb_container").classList.remove("falling");
-    document.querySelector("#bomb_container").offsetWidth;
-    document.querySelector("#bomb_container").classList.add("falling");
+    if (isGameRunning) {
+        // genstart falling animation
+        document.querySelector("#bomb_container").classList.remove("falling");
+        document.querySelector("#bomb_container").offsetWidth;
+        document.querySelector("#bomb_container").classList.add("falling");
 
-    // gør det muligt at klikke på bomb igen
-    document.querySelector("#bomb_container").addEventListener("click", clickBomb);
+        // gør det muligt at klikke på bomb igen
+        document.querySelector("#bomb_container").addEventListener("click", clickBomb);
+    }
 }
 
 function clickHeart() {
@@ -310,6 +317,7 @@ function timeIsUp() {
 }
 
 function stopGame() {
+    isGameRunning = false;
     // Stop animationer
     document.querySelector("#coin1_container").classList.remove("falling");
     document.querySelector("#coin2_container").classList.remove("falling");
