@@ -55,6 +55,9 @@ function startGame() {
     // start alle animationer
     startAllAnimations();
 
+    // start timer
+    startTimer();
+
     // Registrer click
     document.querySelector("#coin1_container").addEventListener("click", clickCoin);
     document.querySelector("#coin2_container").addEventListener("click", clickCoin);
@@ -235,10 +238,6 @@ function incrementPoints() {
     points++;
     console.log("har nu " + points + " point");
     displayPoints();
-
-    if (points === 10) {
-        levelComplete();
-    }
 }
 
 function displayPoints() {
@@ -278,6 +277,8 @@ function gameOver() {
     document.querySelector("#game_over").classList.remove("hidden");
     stopGame();
     document.querySelector("#sound_game_over").play();
+    // vis antal points / mønter
+    document.querySelector("#game_over_coins").textContent = points;
 }
 
 function levelComplete() {
@@ -286,6 +287,26 @@ function levelComplete() {
     stopGame();
     // Afspil tada-lyd
     document.querySelector("#sound_tada").play();
+    // vis antal points / mønter
+    document.querySelector("#level_complete_coins").textContent = points;
+}
+
+function startTimer() {
+    // Sæt timer-animationen (shrink) i gang ved at tilføje klassen shrink til time_sprite
+    document.querySelector("#time_sprite").classList.add("shrink");
+
+    // Tilføj en eventlistener som lytter efter at animationen er færdig (animationend) og kalder funktionen stopSpillet
+    document.querySelector("#time_sprite").addEventListener("animationend", timeIsUp);
+}
+
+function timeIsUp() {
+    console.log("Tiden er gået!");
+
+    if (points >= 10) {
+        levelComplete();
+    } else {
+        gameOver();
+    }
 }
 
 function stopGame() {
@@ -306,4 +327,7 @@ function stopGame() {
     // Stop og nulstil lyde, fx baggrundsmusik
     document.querySelector("#sound_dreams").pause();
     document.querySelector("#sound_dreams").currentTime = 0;
+
+    // nulstil timer - fjern animationen fra timeren (fjern klassen shrink fra time_sprite)
+    document.querySelector("#time_sprite").classList.remove("shrink");
 }
