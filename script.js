@@ -236,7 +236,7 @@ function incrementPoints() {
     console.log("har nu " + points + " point");
     displayPoints();
 
-    if (points >= 10) {
+    if (points === 10) {
         levelComplete();
     }
 }
@@ -249,7 +249,7 @@ function displayPoints() {
 function decrementLives() {
     console.log("mist et liv");
 
-    if (lives <= 1) {
+    if (lives === 1) {
         gameOver();
     }
 
