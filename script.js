@@ -295,7 +295,7 @@ function startTimer() {
     // Sæt timer-animationen (shrink) i gang ved at tilføje klassen shrink til time_sprite
     document.querySelector("#time_sprite").classList.add("shrink");
 
-    // Tilføj en eventlistener som lytter efter at animationen er færdig (animationend) og kalder funktionen stopSpillet
+    // Tilføj en eventlistener som lytter efter at animationen er færdig (animationend) og kalder funktionen timeIsUp
     document.querySelector("#time_sprite").addEventListener("animationend", timeIsUp);
 }
 
