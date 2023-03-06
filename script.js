@@ -131,10 +131,9 @@ function coinGone() {
 
     if (isGameRunning) {
         coinRestart.call(this);
+        // gør det muligt at klikke på coin igen
+        coin.addEventListener("click", clickCoin);
     }
-
-    // gør det muligt at klikke på coin igen
-    coin.addEventListener("click", clickCoin);
 }
 
 function coinRestart() {
