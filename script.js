@@ -69,9 +69,9 @@ function startGame() {
     document.querySelector("#heart_container").addEventListener("click", clickHeart);
 
     // Registrer når bunden rammes
-    document.querySelector("#coin1_container").addEventListener("animationiteration", coinRestart);
-    document.querySelector("#coin2_container").addEventListener("animationiteration", coinRestart);
-    document.querySelector("#coin3_container").addEventListener("animationiteration", coinRestart);
+    document.querySelector("#coin1_container").addEventListener("animationiteration", restartFalling);
+    document.querySelector("#coin2_container").addEventListener("animationiteration", restartFalling);
+    document.querySelector("#coin3_container").addEventListener("animationiteration", restartFalling);
 }
 
 function startAllAnimations() {
@@ -130,13 +130,13 @@ function coinGone() {
     coin.classList.remove("paused");
 
     if (isGameRunning) {
-        coinRestart.call(this);
+        restartFalling.call(this);
         // gør det muligt at klikke på coin igen
         coin.addEventListener("click", clickCoin);
     }
 }
 
-function coinRestart() {
+function restartFalling() {
     console.log("coin restart");
     const coin = this;
 
@@ -186,17 +186,11 @@ function bombGone() {
     document.querySelector("#bomb_container").classList.remove("paused");
 
     if (isGameRunning) {
-        bombRestart();
+        restartFalling.call(this);
+
         // gør det muligt at klikke på bomb igen
         document.querySelector("#bomb_container").addEventListener("click", clickBomb);
     }
-}
-
-function bombRestart() {
-    // genstart falling animation
-    document.querySelector("#bomb_container").classList.remove("falling");
-    document.querySelector("#bomb_container").offsetWidth;
-    document.querySelector("#bomb_container").classList.add("falling");
 }
 
 function clickHeart() {
@@ -233,13 +227,11 @@ function heartGone() {
     // fjern pause
     document.querySelector("#heart_container").classList.remove("paused");
 
-    // genstart falling animation
-    document.querySelector("#heart_container").classList.remove("falling");
-    document.querySelector("#heart_container").offsetWidth;
-    document.querySelector("#heart_container").classList.add("falling");
-
-    // gør det muligt at klikke på heart igen
-    document.querySelector("#heart_container").addEventListener("click", clickHeart);
+    if (isGameRunning) {
+        restartFalling.call(this);
+        // gør det muligt at klikke på heart igen
+        document.querySelector("#heart_container").addEventListener("click", clickHeart);
+    }
 }
 
 function incrementPoints() {
