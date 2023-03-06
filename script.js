@@ -152,7 +152,7 @@ function restartFalling() {
     // fjern alle positioner
     element.classList.remove("position1", "position2", "position3", "position4", "position5");
 
-    // sæt position til en ny klasse
+    // sæt position til en ny klasse (tilfældig position)
     const p = Math.floor(Math.random() * 5);
     element.classList.add(`position${p}`);
 }
@@ -191,7 +191,6 @@ function bombGone() {
 
     if (isGameRunning) {
         restartFalling.call(this);
-
         // gør det muligt at klikke på bomb igen
         document.querySelector("#bomb_container").addEventListener("click", clickBomb);
     }
