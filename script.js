@@ -186,14 +186,17 @@ function bombGone() {
     document.querySelector("#bomb_container").classList.remove("paused");
 
     if (isGameRunning) {
-        // genstart falling animation
-        document.querySelector("#bomb_container").classList.remove("falling");
-        document.querySelector("#bomb_container").offsetWidth;
-        document.querySelector("#bomb_container").classList.add("falling");
-
+        bombRestart();
         // gør det muligt at klikke på bomb igen
         document.querySelector("#bomb_container").addEventListener("click", clickBomb);
     }
+}
+
+function bombRestart() {
+    // genstart falling animation
+    document.querySelector("#bomb_container").classList.remove("falling");
+    document.querySelector("#bomb_container").offsetWidth;
+    document.querySelector("#bomb_container").classList.add("falling");
 }
 
 function clickHeart() {
