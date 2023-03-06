@@ -153,7 +153,7 @@ function restartFalling() {
     element.classList.remove("position1", "position2", "position3", "position4", "position5");
 
     // sæt position til en ny klasse
-    const p = Math.ceil(Math.random() * 5);
+    const p = Math.floor(Math.random() * 5);
     element.classList.add(`position${p}`);
 }
 
@@ -241,7 +241,7 @@ function heartGone() {
 function incrementPoints() {
     console.log("Giv point");
     points++;
-    console.log("har nu " + points + " point");
+    console.log(`Du har nu ${points} point`);
     displayPoints();
 }
 
