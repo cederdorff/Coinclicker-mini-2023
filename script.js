@@ -72,6 +72,8 @@ function startGame() {
     document.querySelector("#coin1_container").addEventListener("animationiteration", restartFalling);
     document.querySelector("#coin2_container").addEventListener("animationiteration", restartFalling);
     document.querySelector("#coin3_container").addEventListener("animationiteration", restartFalling);
+    document.querySelector("#bomb_container").addEventListener("animationiteration", restartFalling);
+    document.querySelector("#heart_container").addEventListener("animationiteration", restartFalling);
 }
 
 function startAllAnimations() {
@@ -137,7 +139,7 @@ function coinGone() {
 }
 
 function restartFalling() {
-    console.log("coin restart");
+    console.log("animation restart");
     const coin = this;
 
     // genstart falling animation
