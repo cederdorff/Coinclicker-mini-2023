@@ -140,19 +140,19 @@ function coinGone() {
 
 function restartFalling() {
     console.log("animation restart");
-    const coin = this;
+    const element = this;
 
     // genstart falling animation
-    coin.classList.remove("falling");
-    coin.offsetWidth;
-    coin.classList.add("falling");
+    element.classList.remove("falling");
+    element.offsetWidth;
+    element.classList.add("falling");
 
     // fjern alle positioner
-    coin.classList.remove("position1", "position2", "position3", "position4", "position5");
+    element.classList.remove("position1", "position2", "position3", "position4", "position5");
 
     // sæt position til en ny klasse
     const p = Math.ceil(Math.random() * 5);
-    coin.classList.add(`position${p}`);
+    element.classList.add(`position${p}`);
 }
 
 function clickBomb() {
