@@ -1,13 +1,15 @@
 "use strict";
-window.addEventListener("load", ready);
 
 // globale variabler
 let points = 0;
 let lives = 0;
 let isGameRunning = false;
 
+// HTML og DOM klar
+window.addEventListener("load", ready);
+
 function ready() {
-    console.log("JavaScript ready!");
+    console.log("script.js is running ready() 🎉");
     document.querySelector("#btn_start").addEventListener("click", startGame);
     document.querySelector("#btn_restart").addEventListener("click", startGame);
     document.querySelector("#btn_go_to_start").addEventListener("click", showStartScreen);
